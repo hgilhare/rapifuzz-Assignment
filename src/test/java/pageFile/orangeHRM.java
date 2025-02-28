@@ -38,18 +38,7 @@ public class orangeHRM {
 
 
     public void userOpenOrangehrmWebpage(){
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-//        options.addArguments("--headless");
-
-        URL u;
-        try {
-            u= new URL("http://192.168.0.66:4444");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-        driver= new RemoteWebDriver(u,options);
-//        driver= new ChromeDriver();
+        driver= new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));

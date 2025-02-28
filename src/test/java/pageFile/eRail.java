@@ -34,17 +34,7 @@ public class eRail {
     By suggestedStaionlocator=By.xpath("(//div[@style='width:240px;float:left;overflow:hidden'])");
     By dateLocator=By.xpath("(//input[@type='button'])[2]");
     public void userOpenOnBrowser(String url){
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-//        options.addArguments("--headless");
-        URL u;
-        try {
-            u= new URL("http://192.168.0.66:4444");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-        driver= new RemoteWebDriver(u,options);
-//        driver= new ChromeDriver();
+        driver= new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
