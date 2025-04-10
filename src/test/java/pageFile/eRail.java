@@ -35,7 +35,15 @@ public class eRail {
     By dateLocator = By.xpath("(//input[@type='button'])[2]");
 
     public void userOpenOnBrowser(String url) {
-        driver = new ChromeDriver();
+        ChromeOptions option= new ChromeOptions();
+        option.addArguments("--remote-allow-origins=*");
+        URL remoteUrl= null;
+        try {
+            remoteUrl = new URL("http://localhost:4444/wd/hub");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        driver = new RemoteWebDriver(remoteUrl,option);
         driver.manage().window().maximize();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
